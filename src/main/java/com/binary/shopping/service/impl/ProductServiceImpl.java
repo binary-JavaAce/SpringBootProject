@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.binary.shopping.entity.Product;
+import com.binary.shopping.exceptions.ProductNotFoundException;
 import com.binary.shopping.repository.ProductRepository;
 import com.binary.shopping.service.ProductService;
 
@@ -18,37 +19,52 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	ProductRepository repository;
 	
-	
+	@Override
 	public List<Product> getProducts() {
 		Iterable<Product> products= repository.findAll();
 		List<Product> list= new ArrayList<>();
 		products.forEach(list::add);
+		if(list.isEmpty()) {
+			throw  new ProductNotFoundException("No Product available !!");
+		}
+		
 		return list;		
 	}
-	
+	@Override
 	public Product findProductById(int id) {
 		
 		Optional<Product> product= repository.findById(id);
-		
-			return product.get();		
+		if(product!=null) {
+			return product.get();
+		}else {
+			throw  new ProductNotFoundException("Something went wrong !! Product not available");
+			}
 		
 	}
 	
+	@Override
 	public Product saveProduct(Product product) {
 	 Product p=repository.save(product);
-	 return p;
+	 if(p!=null)  return p;
+	 
+	 else { 
+		 throw  new ProductNotFoundException("Something went wrong !! Product doesnot saved into the database"); 
+		 
+	 }
+	 
 	}
 	
-	
+	@Override
 	public String deleteProductById(int id) {
 		
 		Optional<Product> product=repository.findById(id);
 		if(product.isPresent()) {
 			repository.delete(product.get());
 			return "Product Deleted Successfully.";
-		}
-		return "Something went wrong !! Product not available for deletion.";
-		
+		}else {
+			
+			throw  new ProductNotFoundException("Something went wrong !! Product not available for deletion.");
+		}	
 		
 	}
 	
@@ -67,8 +83,9 @@ public class ProductServiceImpl implements ProductService{
 			}
 			repository.save(p);
 			return p;
+		}else {
+			throw  new ProductNotFoundException("Product is not updated/unavailable");
 		}
-		return product;
 		
 	}
 	

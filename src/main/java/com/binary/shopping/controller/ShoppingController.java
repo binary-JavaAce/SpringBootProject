@@ -54,5 +54,41 @@ public class ShoppingController {
 		 	return new ResponseEntity<>(productService.deleteProductById(id), HttpStatus.OK);
 	 
 	}
+	 
+	 
+	 @GetMapping("/customers")
+		public ResponseEntity<List<Customer>> getCustomers() {
+			return new ResponseEntity<>(customerService.findAllCustomer(), HttpStatus.OK);
+
+		}
+
+		@PostMapping("/customer")
+		public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer) {
+			return new ResponseEntity<>(customerService.saveCustomer(customer), HttpStatus.CREATED);
+
+		}
+
+		@GetMapping("/customer/{id}")
+		public ResponseEntity<Customer> getCustomerById(@PathVariable int id) {
+			return new ResponseEntity<>(customerService.findCustomerById(id), HttpStatus.OK);
+
+		}
+
+		@GetMapping("/customers/{name}")
+		public ResponseEntity<List<Customer>> getCustomerByLastName(@PathVariable String name) {
+			return new ResponseEntity<>(customerService.findCustomerByLastName(name), HttpStatus.OK);
+		}
+
+		@PutMapping("/customer/{id}")
+		public ResponseEntity<Customer> updateCustomer(@PathVariable int id, @RequestBody Customer customer) {
+			return new ResponseEntity<>(customerService.updateCustomer(id, customer), HttpStatus.ACCEPTED);
+		}
+
+		@DeleteMapping("/customer/{id}")
+
+		public ResponseEntity<String> deleteCustomerById(@PathVariable int id) {
+			return new ResponseEntity<>(customerService.deleteCustomerById(id), HttpStatus.OK);
+		}
+
 	
 }
