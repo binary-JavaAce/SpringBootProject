@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.binary.shopping.entity.Customer;
 import com.binary.shopping.entity.Product;
+import com.binary.shopping.service.CustomerService;
 import com.binary.shopping.service.ProductService;
 
 @RestController
@@ -24,6 +26,9 @@ public class ShoppingController {
 	
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	CustomerService customerService;
 	
 	@GetMapping("/hello")
 	public String hello() {
