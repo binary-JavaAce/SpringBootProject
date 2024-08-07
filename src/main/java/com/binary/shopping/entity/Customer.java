@@ -19,8 +19,8 @@ public class Customer {
 	private int customerId;
 	private String firstName;
 	private String lastName;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-	@JsonIgnore
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "customer")
+	//@JsonIgnore
 	private List<Product> product;
 	
 	public Customer() {

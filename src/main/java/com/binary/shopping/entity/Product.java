@@ -17,7 +17,7 @@ public class Product {
 	private int productId;
 	private String productName;
 	private String productDescription;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
 	// @JsonIgnore
 	private Customer customer;
