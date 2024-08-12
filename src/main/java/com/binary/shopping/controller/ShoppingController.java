@@ -38,6 +38,7 @@ public class ShoppingController {
 	
 	 @GetMapping("/products") 
 	 public ResponseEntity<List<Product>> getProducts() {
+		 System.out.println("Inside get products");
 		 	return new ResponseEntity<>(productService.getProducts(), HttpStatus.OK);
 	 
 	}

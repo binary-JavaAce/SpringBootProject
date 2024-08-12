@@ -20,7 +20,7 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "customer")
-	//@JsonIgnore
+	@JsonIgnore
 	private List<Product> product;
 	
 	public Customer() {

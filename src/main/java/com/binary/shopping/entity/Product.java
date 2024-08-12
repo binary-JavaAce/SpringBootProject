@@ -1,5 +1,7 @@
 package com.binary.shopping.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,7 +21,7 @@ public class Product {
 	private String productDescription;
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
-	// @JsonIgnore
+	//@JsonIgnore
 	private Customer customer;
 
 	public Product() {
