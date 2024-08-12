@@ -36,7 +36,7 @@ public class ShoppingControllerTest {
 
 
 	@Test  // indicate that a particular method is a test method
-	@DisplayName("Retrieving All Customers")  //specify a custom name for your test classes and test methods
+	@DisplayName("Retrieving All Customers Test")  //specify a custom name for your test classes and test methods
 	public void customerController_getCustomers_success(){
 		
 		List<Customer> customers = new ArrayList<Customer>();
