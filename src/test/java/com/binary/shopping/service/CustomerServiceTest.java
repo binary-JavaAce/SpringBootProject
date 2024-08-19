@@ -45,12 +45,12 @@ public class CustomerServiceTest {
 			customer1.setCustomerId(1);
 			customer1.setFirstName("Ana");
 			customer1.setLastName("Dalvi");
-			customer1.setProduct(Stream.of( new Product(1, "TV", "Smart TV",customer1)).collect(Collectors.toList()));
+			customer1.setProduct(Stream.of( new Product(1, "TV", "img1.png", "Smart TV", "20", 5, customer1)).collect(Collectors.toList()));
 			Customer customer2 = new Customer();
 			customer2.setCustomerId(2);
 			customer2.setFirstName("Megha");
 			customer2.setLastName("Dev");
-			customer2.setProduct(Stream.of( new Product(1, "Phone", "Smart Phone", customer2)).collect(Collectors.toList()));
+			customer2.setProduct(Stream.of( new Product(2, "Sari", "img2.png", "Beautiful", "20", 5, customer2)).collect(Collectors.toList()));
 	        List<Customer> Customers =  new ArrayList<>();
 	        Customers.add(customer1);
 	        Customers.add(customer2);

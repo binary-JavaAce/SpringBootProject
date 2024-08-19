@@ -12,6 +12,8 @@ import com.binary.shopping.exceptions.ProductNotFoundException;
 import com.binary.shopping.repository.ProductRepository;
 import com.binary.shopping.service.ProductService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductServiceImpl implements ProductService{
 	
@@ -43,6 +45,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
+	@Transactional
 	public Product saveProduct(Product product) {
 	 Product p=repository.save(product);
 	 if(p!=null)  return p;
@@ -55,6 +58,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
+	@Transactional
 	public String deleteProductById(int id) {
 		
 		Optional<Product> product=repository.findById(id);
@@ -68,7 +72,7 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 	
-	
+	@Transactional
 	public Product updateProduct(int id, Product product) {
 		
 		Optional<Product> prod=repository.findById(id);

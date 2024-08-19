@@ -22,17 +22,23 @@ public class Customer {
 	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "customer")
 	@JsonIgnore
 	private List<Product> product;
+	private long addressId;
 	
 	public Customer() {
 	}
 	
-	public Customer(int customerId, String firstName, String lastName, List<Product> product) {
+	
+
+	public Customer(int customerId, String firstName, String lastName, List<Product> product, long addressId) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.product = product;
+		this.addressId = addressId;
 	}
+
+
 
 	public int getCustomerId() {
 		return customerId;
@@ -59,6 +65,18 @@ public class Customer {
 
 	public void setProduct(List<Product> product) {
 		this.product = product;
+	}
+
+
+
+	public long getAddressId() {
+		return addressId;
+	}
+
+
+
+	public void setAddressId(long addressId) {
+		this.addressId = addressId;
 	}
 	
 	

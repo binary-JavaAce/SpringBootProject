@@ -12,6 +12,8 @@ import com.binary.shopping.exceptions.CustomerNotFoundException;
 import com.binary.shopping.repository.CustomerRepository;
 import com.binary.shopping.service.CustomerService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class CustomerServiceImpl implements CustomerService{
 	
@@ -45,6 +47,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 
 		@Override
+		@Transactional
 		public Customer saveCustomer(Customer customer) {
 			if(customer.getFirstName().isBlank() || customer.getFirstName().isEmpty() || customer.getFirstName()==null) {
 				throw new CustomerNotFoundException("Customer can not be saved in to the system");
@@ -55,6 +58,7 @@ public class CustomerServiceImpl implements CustomerService{
 		}
 
 		@Override
+		@Transactional
 		public String deleteCustomerById(int id) {
 			
 			Customer customer = findCustomerById(id);
@@ -76,6 +80,7 @@ public class CustomerServiceImpl implements CustomerService{
 		}
 
 		@Override
+		@Transactional
 		public Customer updateCustomer(int id, Customer customer) {
 
 			Customer cust = (Customer) findCustomerById(id);

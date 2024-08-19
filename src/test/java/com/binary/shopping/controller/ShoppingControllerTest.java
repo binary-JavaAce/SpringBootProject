@@ -44,7 +44,7 @@ public class ShoppingControllerTest {
 		customer.setCustomerId(1);
 		customer.setFirstName("Ana");
 		customer.setLastName("Dalvi");
-		customer.setProduct(Stream.of( new Product(1, "TV", "Smart TV", customer)).collect(Collectors.toList()));
+		customer.setProduct(Stream.of( new Product(1, "TV", "img1.png", "Smart TV", "20", 5, customer)).collect(Collectors.toList()));
 		customers.add(customer);
 
 	
@@ -84,7 +84,7 @@ public class ShoppingControllerTest {
 			customer.setCustomerId(2);
 			customer.setFirstName("Anita");
 			customer.setLastName("Dev");
-			customer.setProduct(Stream.of( new Product(2, "Phone", "Smart Phone", customer)).collect(Collectors.toList()));
+			customer.setProduct(Stream.of( new Product(3, "TV", "img1.png", "Smart TV", "20", 5, customer)).collect(Collectors.toList()));
 			
 			Mockito.when(customerService.saveCustomer(Mockito.any())).thenReturn(customer);
 
